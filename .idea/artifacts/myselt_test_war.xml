@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="myselt-test:war">
+    <output-path>$PROJECT_DIR$/../myselt-test/target</output-path>
+    <root id="archive" name="myselt-test.war">
+      <element id="artifact" artifact-name="myselt-test:war exploded" />
+    </root>
+  </artifact>
+</component>

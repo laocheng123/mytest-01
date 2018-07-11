@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "mybatis-3-config.dtd" >
+<configuration>
+   <!-- 
+     	环境用于配置数据库连接
+     	default:默认指定执行的数据库连接
+    -->
+   <environments default="mysql-sms">
+      <!-- mybatis可以同时配置多个数据库连接，每个数据库连接使用一个 environment标签-->
+      <environment id="mysql-sms">
+         <!-- 指定事务处理类型
+            1.使用JDBC事务处理类型，JDBC
+            2.不用事务处理类型，MANAGED
+            org.apache.ibatis.session.Configuration.Configuration()
+            	找构建方法
+          -->
+         <transactionManager type="JDBC"></transactionManager>
+         <!-- 四要素 
+         dataSource配置数据库连接的信息（四要素）
+         org.apache.ibatis.session.Configuration.Configuration()
+            type：数据源的类型：
+                                                   使用连接池，POOLED
+                                                    不使用连接池，UNPOOLED
+                                                    使用JNDI ，JNDI
+         org.apache.ibatis.datasource.pooled.PooledDataSource
+         	一个属性对应一个set方法
+         -->
+         <dataSource type="POOLED">
+            <property name="driver" value="org.gjt.mm.mysql.Driver"/>
+            <property name="url" value="jdbc:mysql://localhost:3306/taotao"/>
+            <property name="username" value="root"/>
+            <property name="password" value="root"/>
+         </dataSource>
+        
+      </environment>
+   
+   </environments>
+   <!-- 加载映射文件 -->
+   <mappers >
+      <mapper resource="com/taotao/mapper/TbItemMapper.xml"/>
+   </mappers>
+</configuration>

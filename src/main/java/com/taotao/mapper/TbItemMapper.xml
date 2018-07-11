@@ -1,0 +1,285 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.taotao.mapper.TbItemMapper">
+    <!-- 设置Mybatis全局参数 -->
+
+
+
+
+    <insert id="insertTbitem" parameterType="com.taotao.pojo.TbItem">
+        insert into tb_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid != null">
+                cid,
+            </if>
+            <if test="title != null">
+                title,
+            </if>
+            <if test="sellPoint != null">
+                sell_point,
+            </if>
+            <if test="price != null">
+                price,
+            </if>
+            <if test="num != null">
+                num,
+            </if>
+            <if test="barcode != null">
+                barcode,
+            </if>
+            <if test="image != null">
+                image,
+            </if>
+
+            <if test="status != null">
+                status,
+            </if>
+            <if test="created != null">
+                created,
+            </if>
+            <if test="updated != null">
+                updated,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cid != null">
+                #{cid},
+            </if>
+            <if test="title != null">
+                #{title},
+            </if>
+            <if test="sellPoint != null">
+                #{sellPoint},
+            </if>
+            <if test="price != null">
+                #{price},
+            </if>
+            <if test="num != null">
+                #{num},
+            </if>
+            <if test="barcode != null">
+                #{barcode},
+            </if>
+            <if test="image != null">
+                #{image},
+            </if>
+
+            <if test="status != null">
+                #{status},
+            </if>
+            <if test="created != null">
+                #{created},
+            </if>
+            <if test="updated != null">
+                #{updated},
+            </if>
+        </trim>
+    </insert>
+
+    <insert id="insertMap" parameterType="map">
+        insert into tb_item
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cid != null and cid!=''">
+                cid,
+            </if>
+            <if test="title != null and title !=''">
+                title,
+            </if>
+            <if test="sellPoint != null and sellPoint !=''">
+                sell_point,
+            </if>
+            <if test="price != null and price !=''">
+                price,
+            </if>
+            <if test="num != null and num !=''">
+                num,
+            </if>
+            <if test="barcode != null and barcode !=''">
+                barcode,
+            </if>
+            <if test="image != null and image !=''">
+                image,
+            </if>
+
+            <if test="status != null and status !=''">
+                status,
+            </if>
+            <if test="created != null and created !=''">
+                created,
+            </if>
+            <if test="updated != null and updated !=''">
+                updated,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cid != null and cid!=''">
+                #{cid},
+            </if>
+            <if test="title != null and title !=''">
+                #{title},
+            </if>
+            <if test="sellPoint != null and sellPoint !=''">
+                #{sellPoint},
+            </if>
+            <if test="price != null and price !=''">
+                #{price},
+            </if>
+            <if test="num != null and num !=''">
+                #{num},
+            </if>
+            <if test="barcode != null and barcode !=''">
+                #{barcode},
+            </if>
+            <if test="image != null and image !=''">
+                #{image},
+            </if>
+
+            <if test="status != null and status !=''">
+                #{status},
+            </if>
+            <if test="created != null and created !=''">
+                #{created},
+            </if>
+            <if test="updated != null and updated !=''">
+                #{updated},
+            </if>
+        </trim>
+    </insert>
+
+
+    <delete id="deleteById" parameterType="long">
+        DELETE FROM  tb_item WHERE id=#{id}
+    </delete>
+
+    <delete id="deleteByIdMap" parameterType="map">
+        DELETE FROM  tb_item WHERE id IN
+        <foreach collection="array" item="id" open="(" close=")" separator=",">
+            #{id}
+        </foreach>
+    </delete>
+
+    <update id="updateTbItem" parameterType="com.taotao.pojo.TbItem">
+        update tb_item
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="sellPoint != null">
+                sell_point = #{sellPoint,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=BIGINT},
+            </if>
+            <if test="num != null">
+                num = #{num,jdbcType=INTEGER},
+            </if>
+            <if test="barcode != null">
+                barcode = #{barcode,jdbcType=VARCHAR},
+            </if>
+            <if test="image != null">
+                image = #{image,jdbcType=VARCHAR},
+            </if>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updated != null">
+                updated = #{updated,jdbcType=TIMESTAMP}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+
+    <update id="updateMap" parameterType="map">
+        update tb_item
+        <set>
+            <if test="title != null">
+                title = #{title,jdbcType=VARCHAR},
+            </if>
+            <if test="sell_point != null">
+                sell_point = #{sell_point,jdbcType=VARCHAR},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=BIGINT},
+            </if>
+            <if test="num != null">
+                num = #{num,jdbcType=INTEGER},
+            </if>
+            <if test="barcode != null">
+                barcode = #{barcode,jdbcType=VARCHAR},
+            </if>
+            <if test="image != null">
+                image = #{image,jdbcType=VARCHAR},
+            </if>
+            <if test="cid != null">
+                cid = #{cid,jdbcType=BIGINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="created != null">
+                created = #{created,jdbcType=TIMESTAMP},
+            </if>
+            <if test="updated != null">
+                updated = #{updated,jdbcType=TIMESTAMP}
+            </if>
+        </set>
+        WHERE id=#{id}
+    </update>
+
+    <select id="getByIdTbItem" parameterType="long" resultType="com.taotao.pojo.TbItem">
+        SELECT *
+        FROM tb_item t
+        WHERE t.id = #{id}
+    </select>
+
+    <select id="getItemByIdList"  resultType="com.taotao.pojo.TbItem">
+
+        SELECT
+        t.id,
+        t.title,
+        t.sell_point,
+        t.price,
+        t.num,
+        t.barcode,
+        t.image,
+        t.cid,
+        t.`status`,
+        t.created,
+        t.updated
+        FROM
+        tb_item t
+    </select>
+
+
+    <select id="getItemByIdListMap"  resultType="map">
+
+        SELECT
+            t.id,
+            t.title,
+            t.sell_point,
+            t.price,
+            t.num,
+            t.barcode,
+            t.image,
+            t.cid,
+            t.`status`,
+            t.created,
+            t.updated
+        FROM
+            tb_item t
+    </select>
+
+
+
+
+    <select id="getByIdMap" parameterType="map" resultType="map">
+        SELECT * FROM  tb_item WHERE  id=#{id}
+    </select>
+</mapper>
